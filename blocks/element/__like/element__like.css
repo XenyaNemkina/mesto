@@ -1,12 +1,13 @@
 .element__like {
   width: 24px;
   height: 24px;
-  background-image: url(../../../images/like.svg);
+  background-image: url(../../../images/like_button_svg.svg);
   margin: 0;
   border: none;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
+  cursor: pointer;
 }
 
 .element__like:hover {
@@ -14,5 +15,5 @@
 }
 
 .element__like:active {
-  background-image: url(../../../images/Union.png);
+  background-image: url(../../../images/Union_svg.svg);
 }
