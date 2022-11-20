@@ -11,8 +11,8 @@ let infoProfession = document.querySelector(".info__profession");
 
 const openPopup = function () {
   popupElement.classList.add("popup_is-opened");
-  infoName.textContent = nameInput.value;
-  infoProfession.textContent = jobInput.value;
+  nameInput.value = infoName.textContent;
+  jobInput.value = infoProfession.textContent;
 };
 const closePopup = function () {
   popupElement.classList.remove("popup_is-opened");
@@ -22,6 +22,7 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   infoName.textContent = nameInput.value;
   infoProfession.textContent = jobInput.value;
+  closePopup();
 }
 formElement.addEventListener("submit", formSubmitHandler);
 
