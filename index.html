@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="лого Место">
+      <img class="header__logo" src="./images/logo.svg" alt="лого Место" />
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля" />
         <div class="info">
           <div class="info__text">
             <h1 class="info__name">Жак-Ив Кусто</h1>
@@ -23,8 +23,7 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section>
-        <ul class="elements">
-        </ul>
+        <ul class="elements"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -35,33 +34,33 @@
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="profile-data">
-          <input type="text" name="profile-name" class="popup__field popup__field_type_name" placeholder="Жак-Ив Кусто" autocomplete="off">
-          <input type="text" name="profile-prof" class="popup__field popup__field_type_prof" placeholder="Исследователь океана" autocomplete="off">
+          <input type="text" name="profile-name" class="popup__field popup__field_type_name" placeholder="Жак-Ив Кусто" autocomplete="off" />
+          <input type="text" name="profile-prof" class="popup__field popup__field_type_prof" placeholder="Исследователь океана" autocomplete="off" />
           <button type="submit" class="popup__save">Сохранить</button>
         </form>
       </div>
     </section>
-    <section class="new-card">
+    <section class="popup new-card">
       <div class="new-card__container">
         <button class="new-card__close" type="button"></button>
         <h2 class="new-card__title">Новое место</h2>
         <form class="new-card__form" name="new-card-data">
-          <input type="text" name="new-card-name" class="new-card__field new-card__field_type_name" placeholder="Название" autocomplete="off">
-          <input type="text" name="new-card-src" class="new-card__field new-card__field_type_src" placeholder="Ссылка на картинку" autocomplete="off">
+          <input type="text" name="new-card-name" class="new-card__field new-card__field_type_name" placeholder="Название" autocomplete="off" />
+          <input type="text" name="new-card-src" class="new-card__field new-card__field_type_src" placeholder="Ссылка на картинку" autocomplete="off" />
           <button type="submit" class="new-card__save">Создать</button>
         </form>
       </div>
     </section>
-    <section class="full-image">
+    <section class="popup full-image">
       <div class="full-image__container">
         <button class="full-image__close" type="button"></button>
-        <img class="full-image__img" src=" " alt=" ">
+        <img class="full-image__img" src=" " alt=" " />
         <h2 class="full-image__name"></h2>
       </div>
     </section>
     <template id="element-template">
       <li class="element">
-        <img class="element__img" src=" " alt=" ">
+        <img class="element__img" src=" " alt=" " />
         <div class="element__title">
           <h2 class="element__text"></h2>
           <button class="element__like" type="button"></button>
