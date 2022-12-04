@@ -24,49 +24,7 @@
       </section>
       <section>
         <ul class="elements">
-        <li class="element">
-          <img class="element__img" src="./images/karachaevsk.png" alt="Карачаевск">
-          <div class="element__title">
-            <h2 class="element__text">Карачаевск</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__img" src="./images/elbrus.png" alt="Эльбрус">
-          <div class="element__title">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__img" src="./images/dobmai.png" alt="Домбай">
-          <div class="element__title">
-            <h2 class="element__text">Домбай</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__img" src="./images/baikal-min.jpg" alt="Байкал">
-          <div class="element__title">
-            <h2 class="element__text">Байкал</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__img" src="./images/kamchatka-min.jpg" alt="Камчатка">
-          <div class="element__title">
-            <h2 class="element__text">Камчатка</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img class="element__img" src="./images/solovets-min.jpg" alt="Соловецкие острова">
-          <div class="element__title">
-            <h2 class="element__text">Соловецкие острова</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </li>
-      </ul>
+        </ul>
       </section>
     </main>
     <footer class="footer">
@@ -83,6 +41,34 @@
         </form>
       </div>
     </section>
+    <section class="new-card">
+      <div class="new-card__container">
+        <button class="new-card__close" type="button"></button>
+        <h2 class="new-card__title">Новое место</h2>
+        <form class="new-card__form" name="new-card-data">
+          <input type="text" name="new-card-name" class="new-card__field new-card__field_type_name" placeholder="Название" autocomplete="off">
+          <input type="text" name="new-card-src" class="new-card__field new-card__field_type_src" placeholder="Ссылка на картинку" autocomplete="off">
+          <button type="submit" class="new-card__save">Создать</button>
+        </form>
+      </div>
+    </section>
+    <section class="full-image">
+      <div class="full-image__container">
+        <button class="full-image__close" type="button"></button>
+        <img class="full-image__img" src=" " alt=" ">
+        <h2 class="full-image__name"></h2>
+      </div>
+    </section>
+    <template id="element-template">
+      <li class="element">
+        <img class="element__img" src=" " alt=" ">
+        <div class="element__title">
+          <h2 class="element__text"></h2>
+          <button class="element__like" type="button"></button>
+          <button class="element__basket" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

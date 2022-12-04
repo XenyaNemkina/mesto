@@ -1,4 +1,4 @@
-.popup__field {
+.new-card__field {
   width: 358px;
   height: 27px;
   display: flex;
@@ -12,7 +12,7 @@
   margin: 0 auto 30px;
 }
 
-.popup__field::placeholder {
+.new-card__field::placeholder {
   font-family: inherit;
   font-weight: 400;
   font-size: 14px;
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 590px) {
-  .popup__field {
+  .new-card__field {
     width: 238px;
   }
 }
