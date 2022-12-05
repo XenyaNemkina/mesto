@@ -11,13 +11,13 @@ const newCardSaveButton = newCardPopup.querySelector(".popup__save_new-card");
 const fullImgPopup = document.querySelector(".popup_full-image"); /* переменная 3 */
 const fullImgCloseButton = fullImgPopup.querySelector(".popup__close_full-image"); /* кнопка закрытия 3 */
 const profileForm = document.querySelector(".popup__form_profile");
-const nameInput = profileForm.querySelector(".popup__field_profile_type_name");
-const jobInput = profileForm.querySelector(".popup__field_profile_type_prof");
+const nameInput = profileForm.querySelector(".popup_profile_field_type_name");
+const jobInput = profileForm.querySelector(".popup_profile_field_type_prof");
 const infoName = document.querySelector(".info__name");
 const infoProfession = document.querySelector(".info__profession");
 const newCardForm = document.querySelector(".popup__form_new-card");
-const newCardNameInput = newCardForm.querySelector(".popup__field_new-card_type_name");
-const newCardSrcInput = newCardForm.querySelector(".popup__field_new-card_type_src");
+const newCardNameInput = newCardForm.querySelector(".popup_new-card_field_type_name");
+const newCardSrcInput = newCardForm.querySelector(".popup_new-card_field_type_src");
 const fullImgElement = document.querySelector(".popup__img_full-image");
 const fullImgName = document.querySelector(".popup__name_full-image");
 
