@@ -1,4 +1,4 @@
-.full-image__name {
+.popup__full-image_name {
   width: 291px;
   color: white;
   font-weight: 400;
@@ -6,4 +6,10 @@
   line-height: 15px;
   margin: 10px 0;
   font-family: "Inter", Arial, sans-serif;
+}
+
+@media screen and (max-width: 410px) {
+  .popup__full-image_name {
+    width: 240px;
+  }
 }
