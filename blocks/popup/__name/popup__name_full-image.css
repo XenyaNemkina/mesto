@@ -1,4 +1,4 @@
-.popup__full-image_name {
+.popup__name_full-image {
   width: 291px;
   color: white;
   font-weight: 400;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 410px) {
-  .popup__full-image_name {
+  .popup__name_full-image {
     width: 240px;
   }
 }

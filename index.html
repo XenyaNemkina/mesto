@@ -30,32 +30,32 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
     <section class="popup popup__profile">
-      <div class="popup__container popup__profile_container">
-        <button class="popup__close popup__profile_close" type="button"></button>
+      <div class="popup__container popup__container_profile">
+        <button class="popup__close popup__close_profile" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__profile_form" name="profile-data">
-          <input type="text" name="profile-name" class="popup__field popup__field_type_name" placeholder="Имя" autocomplete="off" />
-          <input type="text" name="profile-prof" class="popup__field popup__field_type_prof" placeholder="О себе" autocomplete="off" />
-          <button type="submit" class="popup__save popup__profile_save">Сохранить</button>
+        <form class="popup__form popup__form_profile" name="profile-data">
+          <input type="text" name="profile-name" class="popup__field popup__form_profile_field_type_name" placeholder="Имя" autocomplete="off" />
+          <input type="text" name="profile-prof" class="popup__field popup__form_profile_field_type_prof" placeholder="О себе" autocomplete="off" />
+          <button type="submit" class="popup__save popup__save_profile">Сохранить</button>
         </form>
       </div>
     </section>
     <section class="popup popup__new-card">
       <div class="popup__container">
-        <button class="popup__close popup__new-card_close" type="button"></button>
+        <button class="popup__close popup__close_new-card" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__new-card_form" name="new-card-data">
-          <input type="text" name="new-card-name" class="popup__field popup__new-card_form_field_type_name" placeholder="Название" autocomplete="off" />
-          <input type="text" name="new-card-src" class="popup__field popup__new-card_form_field_type_src" placeholder="Ссылка на картинку" autocomplete="off" />
-          <button type="submit" class="popup__save">Создать</button>
+        <form class="popup__form popup__form_new-card" name="new-card-data">
+          <input type="text" name="new-card-name" class="popup__field popup__form_new-card_field_type_name" placeholder="Название" autocomplete="off" />
+          <input type="text" name="new-card-src" class="popup__field popup__form_new-card_field_type_src" placeholder="Ссылка на картинку" autocomplete="off" />
+          <button type="submit" class="popup__save popup__save_new-card">Создать</button>
         </form>
       </div>
     </section>
     <section class="popup popup__full-image">
-      <div class="popup__container popup__full-image_container">
-        <button class="popup__close popup__full-image_close" type="button"></button>
-        <img class="popup__img popup__full-image_img" src=" " alt=" " />
-        <h2 class="popup__name popup__full-image_name"></h2>
+      <div class="popup__container popup__container_full-image">
+        <button class="popup__close popup__close_full-image" type="button"></button>
+        <img class="popup__img popup__img_full-image" src=" " alt=" " />
+        <h2 class="popup__name popup__name_full-image"></h2>
       </div>
     </section>
     <template id="element-template">
