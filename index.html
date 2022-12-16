@@ -35,9 +35,9 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form popup__form_profile" name="profile-data">
           <input id="name" type="text" name="profile-name" class="popup__field popup__field_type_nickname" placeholder="Имя" autocomplete="off" minlength="2" maxlength="40" required />
-          <span id="name-error" class="popup__field_error popup__field_error_active"></span>
+          <span id="name-error" class="popup__error popup__error_active"></span>
           <input id="prof" type="text" name="profile-prof" class="popup__field popup__field_type_prof" placeholder="О себе" autocomplete="off" minlength="2" maxlength="200" required />
-          <span id="prof-error" class="popup__field_error popup__field_error_active"></span>
+          <span id="prof-error" class="popup__error popup__error_active"></span>
           <button type="submit" class="popup__save popup__save_profile popup__save_disabled" disabled>Сохранить</button>
         </form>
       </div>
@@ -48,9 +48,9 @@
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_new-card" name="new-card-data">
           <input id="new-card-name" type="text" name="new-card-name" class="popup__field popup__field_type_name" placeholder="Название" autocomplete="off" minlength="2" maxlength="30" required />
-          <span id="new-card-name-error" class="popup__field_error popup__field_error_active"></span>
+          <span id="new-card-name-error" class="popup__error popup__error_active"></span>
           <input id="new-card-src" name="new-card-src" class="popup__field popup__field_type_src" placeholder="Ссылка на картинку" autocomplete="off" type="url" required />
-          <span id="new-card-src-error" class="popup__field_error popup__field_error_active"></span>
+          <span id="new-card-src-error" class="popup__error popup__error_active"></span>
           <button type="submit" class="popup__save popup__save_new-card popup__save_disabled">Создать</button>
         </form>
       </div>
