@@ -10,6 +10,7 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin: 0 auto 30px;
+  padding: 0;
 }
 
 .popup__field::placeholder {
@@ -17,7 +18,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #C4C4C4;
+  color: #c4c4c4;
 }
 
 @media screen and (max-width: 590px) {

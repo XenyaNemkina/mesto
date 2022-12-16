@@ -21,20 +21,37 @@ const newCardSrcInput = newCardForm.querySelector(".popup__field_type_src");
 const fullImgElement = document.querySelector(".popup__img_full-image");
 const fullImgName = document.querySelector(".popup__name_full-image");
 
+const handleKeyUp = (evt) => {
+  const openItem = document.querySelector(".popup_is-opened");
+  if (evt.key === "Escape") {
+    closePopup(openItem);
+  }
+};
+
+const handleOverlay = (evt) => {
+  if (!evt.target.closest(".popup__container")) {
+    closePopup(evt.target.closest(".popup"));
+  }
+};
 
 const openPopup = function (item) {
   item.classList.add("popup_is-opened");
+  document.addEventListener("keyup", handleKeyUp);
+  document.addEventListener("click", handleOverlay);
 };
 
 const closePopup = function (item) {
   item.classList.remove("popup_is-opened");
+  document.removeEventListener("keyup", handleKeyUp);
+
+  // item.querySelector('.popup__form').reset()
 };
 
-function openPropfilePopup() { 
+function openProfilePopup() {
+  openPopup(profilePopup);
   nameInput.value = infoName.textContent;
-  jobInput.value = infoProfession.textContent; 
-  openPopup(profilePopup); 
-  } 
+  jobInput.value = infoProfession.textContent;
+}
 
 function handleSubmitProfileForm(evt) {
   evt.preventDefault();
@@ -45,12 +62,14 @@ function handleSubmitProfileForm(evt) {
 
 const handleSubmitNewForm = (evt) => {
   evt.preventDefault();
+
   const cardElement = {
     name: newCardNameInput.value,
     link: newCardSrcInput.value,
   };
   const newElement = generateCard(cardElement);
   elementsContainer.prepend(newElement);
+  toggleButtonState();
   closePopup(newCardPopup);
   evt.target.reset();
 };
@@ -91,10 +110,8 @@ initialCards.forEach((dataCard) => {
   renderCard(dataCard);
 });
 
-
-
 profileOpenButton.addEventListener("click", () => {
-  openPropfilePopup(profilePopup);
+  openProfilePopup(profilePopup);
 });
 profileCloseButton.addEventListener("click", () => {
   closePopup(profilePopup);
