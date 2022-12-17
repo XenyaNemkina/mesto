@@ -20,31 +20,29 @@ const newCardNameInput = newCardForm.querySelector(".popup__field_type_name");
 const newCardSrcInput = newCardForm.querySelector(".popup__field_type_src");
 const fullImgElement = document.querySelector(".popup__img_full-image");
 const fullImgName = document.querySelector(".popup__name_full-image");
+const buttonCloseList = document.querySelectorAll('.popup__close');
 
-const handleKeyUp = (evt) => {
-  const openItem = document.querySelector(".popup_is-opened");
-  if (evt.key === "Escape") {
+const handleKeyDown = (evt) => {
+    if (evt.key === "Escape") {
+    const openItem = document.querySelector(".popup_is-opened");
     closePopup(openItem);
   }
 };
 
 const handleOverlay = (evt) => {
   if (!evt.target.closest(".popup__container")) {
-    closePopup(evt.target.closest(".popup"));
+    closePopup(evt.target);
   }
 };
 
 const openPopup = function (item) {
   item.classList.add("popup_is-opened");
-  document.addEventListener("keyup", handleKeyUp);
-  document.addEventListener("click", handleOverlay);
+  document.addEventListener("keydown", handleKeyDown);
 };
 
 const closePopup = function (item) {
   item.classList.remove("popup_is-opened");
-  document.removeEventListener("keyup", handleKeyUp);
-
-  // item.querySelector('.popup__form').reset()
+  document.removeEventListener("keydown", handleKeyDown);
 };
 
 function openProfilePopup() {
@@ -69,7 +67,8 @@ const handleSubmitNewForm = (evt) => {
   };
   const newElement = generateCard(cardElement);
   elementsContainer.prepend(newElement);
-  toggleButtonState();
+  evt.submitter.classList.add('popup__save_disabled');
+  evt.submitter.disabled = true;
   closePopup(newCardPopup);
   evt.target.reset();
 };
@@ -113,17 +112,17 @@ initialCards.forEach((dataCard) => {
 profileOpenButton.addEventListener("click", () => {
   openProfilePopup(profilePopup);
 });
-profileCloseButton.addEventListener("click", () => {
-  closePopup(profilePopup);
-});
 newCardOpenButton.addEventListener("click", () => {
   openPopup(newCardPopup);
 });
-newCardCloseButton.addEventListener("click", () => {
-  closePopup(newCardPopup);
-});
-fullImgCloseButton.addEventListener("click", () => {
-  closePopup(fullImgPopup);
-});
+
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(popup)); 
+}) 
+
 profileForm.addEventListener("submit", handleSubmitProfileForm);
 newCardForm.addEventListener("submit", handleSubmitNewForm);
+profilePopup.addEventListener("click", handleOverlay);
+newCardPopup.addEventListener("click", handleOverlay);
+fullImgPopup.addEventListener("click", handleOverlay);
