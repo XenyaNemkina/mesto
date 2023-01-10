@@ -8,6 +8,8 @@ const elementsContainer = document.querySelector(".elements");
 const newCardPopup = document.querySelector(".popup_new-card"); /* переменная 2 */
 const newCardOpenButton = document.querySelector(".profile__add-button"); /* кнопка открытия 2 */
 const fullImgPopup = document.querySelector(".popup_full-image"); /* переменная 3 */
+const fullImgElement = fullImgPopup.querySelector(".popup__img_full-image");
+const fullImgName = fullImgPopup.querySelector(".popup__name_full-image");
 const profileForm = document.querySelector(".popup__form_profile");
 const nameInput = profileForm.querySelector(".popup__field_type_nickname");
 const jobInput = profileForm.querySelector(".popup__field_type_prof");
@@ -54,11 +56,22 @@ function handleSubmitProfileForm(evt) {
   closePopup(profilePopup);
 }
 
-const handleSubmitNewForm = (evt) => {
-  evt.preventDefault();
-  const cardElement = new Card(newCardNameInput.value, newCardSrcInput.value);
+export function handleOpenPopup(link, text) {
+  fullImgElement.src = link;
+  fullImgElement.alt = text;
+  fullImgName.textContent = text;
+  openPopup(fullImgPopup);
+}
+
+function renderCard(link, text) {
+  const cardElement = new Card(link, text, handleOpenPopup);
   const newElement = cardElement.generateCard();
   elementsContainer.prepend(newElement);
+}
+
+const handleSubmitNewForm = (evt) => {
+  evt.preventDefault();
+  renderCard(newCardNameInput.value, newCardSrcInput.value, handleOpenPopup);
   evt.submitter.classList.add("popup__save_disabled");
   evt.submitter.disabled = true;
   closePopup(newCardPopup);
@@ -66,9 +79,7 @@ const handleSubmitNewForm = (evt) => {
 };
 
 initialCards.forEach((item) => {
-  const card = new Card(item.name, item.link);
-  const cardElement = card.generateCard();
-  elementsContainer.prepend(cardElement);
+  renderCard(item.name, item.link, handleOpenPopup);
 });
 
 profileOpenButton.addEventListener("click", () => {
