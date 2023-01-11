@@ -3,11 +3,17 @@ const fullImgElement = document.querySelector(".popup__img_full-image");
 const fullImgName = document.querySelector(".popup__name_full-image");
 
 export class Card {
-  constructor(name, link, handleOpenPopup) {
-    (this._text = name), (this._image = link), (this._fullImgPopup = fullImgPopup), (this._fullImgElement = fullImgElement), (this._fullImgName = fullImgName), (this._handleOpenPopup = handleOpenPopup);
+  constructor(name, link, templateSelector, handleOpenPopup) {
+    (this._text = name),
+    (this._image = link),
+    (this._fullImgPopup = fullImgPopup),
+    (this._fullImgElement = fullImgElement),
+    (this._fullImgName = fullImgName),
+    (this._handleOpenPopup = handleOpenPopup),
+    (this._templateSelector = templateSelector)
   }
   _getTemplate() {
-    const cardElement = document.querySelector("#element-template").content.querySelector(".element").cloneNode(true);
+    const cardElement = document.querySelector(this._templateSelector).content.querySelector(".element").cloneNode(true);
     return cardElement;
   }
 

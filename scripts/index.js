@@ -2,6 +2,7 @@ import { Card } from "./Card.js";
 import { initialCards } from "./InitialCards.js";
 import { FormValidator } from "./FormValidator.js";
 
+
 const profilePopup = document.querySelector(".popup_profile"); /* переменная 1 */
 const profileOpenButton = document.querySelector(".info__button"); /* кнопка открытия 1 */
 const elementsContainer = document.querySelector(".elements");
@@ -64,14 +65,14 @@ export function handleOpenPopup(link, text) {
 }
 
 function renderCard(link, text) {
-  const cardElement = new Card(link, text, handleOpenPopup);
+  const cardElement = new Card(link, text, "#element-template", handleOpenPopup);
   const newElement = cardElement.generateCard();
-  elementsContainer.prepend(newElement);
+  return newElement;
 }
 
 const handleSubmitNewForm = (evt) => {
   evt.preventDefault();
-  renderCard(newCardNameInput.value, newCardSrcInput.value, handleOpenPopup);
+  elementsContainer.prepend(renderCard(newCardNameInput.value, newCardSrcInput.value, handleOpenPopup));
   evt.submitter.classList.add("popup__save_disabled");
   evt.submitter.disabled = true;
   closePopup(newCardPopup);
@@ -79,7 +80,7 @@ const handleSubmitNewForm = (evt) => {
 };
 
 initialCards.forEach((item) => {
-  renderCard(item.name, item.link, handleOpenPopup);
+  elementsContainer.prepend(renderCard(item.name, item.link, handleOpenPopup));
 });
 
 profileOpenButton.addEventListener("click", () => {
