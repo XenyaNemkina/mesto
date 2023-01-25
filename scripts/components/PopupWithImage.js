@@ -1,13 +1,13 @@
 import {Popup} from './Popup.js';
 
-export default class PopupWithImage extends Popup {
+export class PopupWithImage extends Popup {
   constructor(selectorPopup) {
     super(selectorPopup);
-    this._popupImg = this._popupImg.querySelector('.popup__img');
-    this._popupName = this._popupImg.querySelector('.popup__name');
+    this._popupImg = this._popup.querySelector('.popup__img_full-image');
+    this._popupName = this._popup.querySelector('.popup__name_full-image');
   };
 
-  open(name, link) {
+  open(link, name) {
     this._popupImg.src = link;
     this._popupImg.alt = name;
     this._popupName.textContent = name;

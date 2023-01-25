@@ -1,16 +1,11 @@
-const fullImgPopup = document.querySelector(".popup_full-image");
-const fullImgElement = document.querySelector(".popup__img_full-image");
-const fullImgName = document.querySelector(".popup__name_full-image");
+
 
 export class Card {
-  constructor(item, templateSelector) {
+  constructor(item, templateSelector, handleCardClick) {
     (this._text = item.name),
     (this._image = item.link),
-    (this._fullImgPopup = fullImgPopup),
-    (this._fullImgElement = fullImgElement),
-    (this._fullImgName = fullImgName),
-    //(this._handleOpenPopup = handleOpenPopup),
-    (this._templateSelector = templateSelector)
+    (this._templateSelector = templateSelector),
+    (this._handleCardClick = handleCardClick)
   }
   _getTemplate() {
     const cardElement = document.querySelector(this._templateSelector).content.querySelector(".element").cloneNode(true);
@@ -28,9 +23,9 @@ export class Card {
     this._element.querySelector(".element__like").addEventListener("click", () => {
       this._handleLikeCard();
     });
-    //this._element.querySelector(".element__img").addEventListener("click", () => {
-      //this._handleOpenPopup(this._image, this._text);
-    //});
+    this._element.querySelector(".element__img").addEventListener("click", () => {
+      this._handleCardClick(this._image, this._text);
+    });
   }
 
   generateCard() {

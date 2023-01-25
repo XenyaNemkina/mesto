@@ -1,55 +1,14 @@
 import { Card } from "../components/Card.js";
-import { initialCards } from "../constants.js";
-import { FormValidator } from "../FormValidator.js";
+import { initialCards } from "../utils/constants.js";
+import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
-import {templateSelector, profilePopup, profileOpenButton, elementsContainer, newCardPopup, newCardOpenButton, fullImgPopup, fullImgElement, fullImgName, profileForm, nameInput, jobInput, infoName, infoProfession, newCardForm, newCardNameInput, newCardSrcInput} from "../constants.js";
-//import {Popup} from "../Popup.js";
-/*
-const handleKeyDown = (evt) => {
-  if (evt.key === "Escape") {
-    const openItem = document.querySelector(".popup_is-opened");
-    closePopup(openItem);
-  }
-};
-
-const handleOverlay = (evt) => {
-  if (!evt.target.closest(".popup__container")) {
-    closePopup(evt.target);
-  }
-};
-
-const openPopup = function (item) {
-  item.classList.add("popup_is-opened");
-  document.addEventListener("keydown", handleKeyDown);
-};
-
-const closePopup = function (item) {
-  item.classList.remove("popup_is-opened");
-  document.removeEventListener("keydown", handleKeyDown);
-};
-
-function openProfilePopup() {
-  openPopup(profilePopup);
-  nameInput.value = infoName.textContent;
-  jobInput.value = infoProfession.textContent;
-}
-
-function handleSubmitProfileForm(evt) {
-  evt.preventDefault();
-  infoName.textContent = nameInput.value;
-  infoProfession.textContent = jobInput.value;
-  closePopup(profilePopup);
-}
-
-export function handleOpenPopup(link, text) {
-  fullImgElement.src = link;
-  fullImgElement.alt = text;
-  fullImgName.textContent = text;
-  openPopup(fullImgPopup);
-}*/
+import {templateSelector, profilePopup, profileOpenButton, newCardPopup, newCardForm, elementsContainer, newCardOpenButton, fullImgPopup, profileForm, nameInput, jobInput, infoName, infoProfession, newCardNameInput, newCardSrcInput} from "../utils/constants.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import {PopupWithForm} from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 
  function renderCard(data) {
-  const cardElement = new Card(data, '#element-template');
+  const cardElement = new Card(data, '#element-template', handleCardClick);
   const newElement = cardElement.generateCard();
   return newElement;
 };
@@ -63,42 +22,43 @@ const cardList = new Section({
 
 cardList.renderItems();
 
+const fullImagePopup = new PopupWithImage(fullImgPopup);
+fullImagePopup.setEventListeners();
+
+function handleCardClick(name, link) {
+  fullImagePopup.open(name, link);
+}
 
 
+const newCardFormPopup = new PopupWithForm({selectorPopup: newCardPopup, 
+handleFormSubmit: (formData) => {
+  cardList.addItem(renderCard(formData));
+}})
 
-/*
-const handleSubmitNewForm = (evt) => {
-  evt.preventDefault();
-  elementsContainer.prepend(renderCard(newCardNameInput.value, newCardSrcInput.value, handleOpenPopup));
-  evt.submitter.classList.add("popup__save_disabled");
-  evt.submitter.disabled = true;
-  closePopup(newCardPopup);
-  evt.target.reset();
-};
+newCardFormPopup.setEventListeners();
+newCardOpenButton.addEventListener('click', () => {
+  newCardFormPopup.open();
+})
 
-initialCards.forEach((item) => {
-  elementsContainer.prepend(renderCard(item.name, item.link, handleOpenPopup));
+
+const userInfo = new UserInfo({
+  infoName: ".info__name",
+  infoProf: ".info__profession",
 });
-/*
-profileOpenButton.addEventListener("click", () => {
-  openProfilePopup(profilePopup);
-});
-newCardOpenButton.addEventListener("click", () => {
-  openPopup(newCardPopup);
-});
 
-buttonCloseList.forEach((btn) => {
-  const popup = btn.closest(".popup");
-  btn.addEventListener("click", () => closePopup(popup));
-});*/
+const userInfoFormPopup = new PopupWithForm({selectorPopup: profilePopup, 
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData.name, formData.prof);
+    userInfoFormPopup.close();
+  }})
+  
+  userInfoFormPopup.setEventListeners();
+  profileOpenButton.addEventListener('click', () => {
+    const {name, prof} = userInfo.getUserInfo();
+    userInfoFormPopup.open();
+  })
 
 const newCardValidator = new FormValidator(newCardForm);
 newCardValidator.enableValidation();
 const profileFormValidator = new FormValidator(profileForm);
 profileFormValidator.enableValidation();
-/*
-profileForm.addEventListener("submit", handleSubmitProfileForm);
-newCardForm.addEventListener("submit", handleSubmitNewForm);
-profilePopup.addEventListener("click", handleOverlay);
-newCardPopup.addEventListener("click", handleOverlay);
-fullImgPopup.addEventListener("click", handleOverlay);*/
