@@ -1,5 +1,3 @@
-import {popupCloseButton} from "../utils/constants.js";
-
 export class Popup {
   constructor(selectorPopup) {
     this._popup = document.querySelector(selectorPopup),
@@ -22,9 +20,9 @@ if (evt.key === 'Escape') {
 }
   };
   setEventListeners() {
-this._popup.addEventListener('click', () => {
-  this.close();
-})
+this._popup.addEventListener('mousedown', (evt) => {
+  if (evt.target.classList.contains('popup')) {
+   this.close()}});
 
 this._closeButton.addEventListener('click', () => {
       this.close();
