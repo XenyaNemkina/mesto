@@ -34,10 +34,14 @@ function handleCardClick(name, link) {
 
 //попап новая карточка
 const newCardFormPopup = new PopupWithForm({selectorPopup: newCardPopup, 
-handleNewCardFormSubmit});
-function handleNewCardFormSubmit(evt, formData) {
-  evt.preventDefault();
-  cardList.addItem(renderCard(formData))
+handleFormSubmit});
+
+function handleFormSubmit(formData) {
+  const data = {
+    name: formData.name,
+    link: formData.link
+  }
+  cardList.addItem(renderCard(data))
   newCardFormPopup.close();
 }
 
@@ -48,22 +52,23 @@ newCardOpenButton.addEventListener('click', () => {
 
 
 //попап информация профиля
-const userInfo = new UserInfo({ selectorName: '.popup__field_type_nickname', selectorProf: '.popup__field_type_prof'});
+const userInfo = new UserInfo({ selectorName: ".info__name", selectorProf: ".info__profession"});
 
 const userInfoFormPopup = new PopupWithForm({selectorPopup: profilePopup, 
-  handleFormSubmit: (evt, formData) => {
-    evt.preventDefault();
+  handleFormSubmit: (formData) => {
+    console.log(userInfo);
     userInfo.setUserInfo(formData.name, formData.prof);
+    console.log(formData.name);
     userInfoFormPopup.close();
   }})
   
   userInfoFormPopup.setEventListeners();
 
   profileOpenButton.addEventListener('click', () => {
-    const {name, prof} = userInfo.getUserInfo();
-    userInfoFormPopup.setFormValues({name, prof});
-   // profileFormValidator.resetValidation();
     userInfoFormPopup.open();
+    const {name, prof} = userInfo.getUserInfo();
+    nameInput.value = name;
+    jobInput.value = prof;
   })
 
   //валидаторы
