@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import { Card } from "../components/Card.js";
 import { initialCards } from "../utils/constants.js";
 import { FormValidator } from "../components/FormValidator.js";
@@ -6,7 +7,6 @@ import { newCardNameInput, newCardSrcInput, profilePopup, profileOpenButton, new
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
-
 //карточка
 function renderCard(data) {
   const cardElement = new Card(data, "#element-template", handleCardClick);
