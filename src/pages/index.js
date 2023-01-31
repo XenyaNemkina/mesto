@@ -1,12 +1,12 @@
-import '../pages/index.css';
-import { Card } from "../components/Card.js";
-import { initialCards } from "../utils/constants.js";
-import { FormValidator } from "../components/FormValidator.js";
-import { Section } from "../components/Section.js";
-import { newCardNameInput, newCardSrcInput, profilePopup, profileOpenButton, newCardPopup, newCardForm, elementsContainer, newCardOpenButton, fullImgPopup, profileForm, nameInput, jobInput } from "../utils/constants.js";
-import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
-import { UserInfo } from "../components/UserInfo.js";
+import './index.css';
+import { Card } from "../scripts/components/Card.js";
+import { initialCards } from "../scripts/utils/constants.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
+import { Section } from "../scripts/components/Section.js";
+import { newCardNameInput, newCardSrcInput, profilePopup, profileOpenButton, newCardPopup, newCardForm, elementsContainer, newCardOpenButton, fullImgPopup, profileForm, nameInput, jobInput } from "../scripts/utils/constants.js";
+import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
+import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
+import { UserInfo } from "../scripts/components/UserInfo.js";
 //карточка
 function renderCard(data) {
   const cardElement = new Card(data, "#element-template", handleCardClick);
@@ -49,6 +49,7 @@ function handleFormSubmit() {
 
 newCardFormPopup.setEventListeners();
 newCardOpenButton.addEventListener("click", () => {
+  newCardValidator._toggleButtonState();
   newCardFormPopup.open();
 });
 
