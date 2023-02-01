@@ -1,6 +1,6 @@
 import './index.css';
 import { Card } from "../scripts/components/Card.js";
-import { initialCards } from "../scripts/utils/constants.js";
+import { initialCards, selectors } from "../scripts/utils/constants.js";
 import { FormValidator } from "../scripts/components/FormValidator.js";
 import { Section } from "../scripts/components/Section.js";
 import { newCardNameInput, newCardSrcInput, profilePopup, profileOpenButton, newCardPopup, newCardForm, elementsContainer, newCardOpenButton, fullImgPopup, profileForm, nameInput, jobInput } from "../scripts/utils/constants.js";
@@ -36,20 +36,14 @@ function handleCardClick(name, link) {
 }
 
 //попап новая карточка
-const newCardFormPopup = new PopupWithForm({ selectorPopup: newCardPopup, handleFormSubmit });
-
-function handleFormSubmit() {
-  const data = {
-    name: newCardNameInput.value,
-    link: newCardSrcInput.value,
-  };
+const newCardFormPopup = new PopupWithForm({ selectorPopup: newCardPopup, handleFormSubmit: (data) => {
   cardList.addItem(renderCard(data));
   newCardFormPopup.close();
-}
+}});
 
 newCardFormPopup.setEventListeners();
 newCardOpenButton.addEventListener("click", () => {
-  newCardValidator._toggleButtonState();
+  newCardValidator.resetValidation();
   newCardFormPopup.open();
 });
 
@@ -75,7 +69,7 @@ const userInfoFormPopup = new PopupWithForm({
 userInfoFormPopup.setEventListeners();
 
 //валидаторы
-const newCardValidator = new FormValidator(newCardForm);
+const newCardValidator = new FormValidator(selectors, newCardForm);
 newCardValidator.enableValidation();
-const profileFormValidator = new FormValidator(profileForm);
+const profileFormValidator = new FormValidator(selectors, profileForm);
 profileFormValidator.enableValidation();

@@ -12,6 +12,7 @@ export class UserInfo {
   }
 
   setUserInfo(name, prof) {
-    (this._userName.textContent = name), (this._userProf.textContent = prof);
+    this._userName.textContent = name, 
+    this._userProf.textContent = prof;
   }
 }
