@@ -1,4 +1,4 @@
-.profile__avatar-button {
+.profile__avatarbtn {
   position: absolute;
   opacity: 0;
   width: 120px;
@@ -9,7 +9,7 @@
   border: 0;
 }
 
-.profile__avatar-button:hover {
+.profile__avatarbtn:hover {
   opacity: 0.8;
   background-repeat: no-repeat;
   background-position: center;
