@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 export const profilePopup = ".popup_profile"; /* переменная 1 */
 export const profileOpenButton = document.querySelector(".info__button"); /* кнопка открытия 1 */
 export const elementsContainer = ".elements";
@@ -42,6 +15,12 @@ export const newCardSrcInput = document.querySelector(".popup__field_type_src");
 export const popupCloseButton = ".popup__close";
 export const templateSelector = document.querySelector("#element-template");
 export const newCardSaveButton = document.querySelector(".popup__save_new-card");
+export const avaCreateButton = document.querySelector(".profile__avatar-button");
+export const avaCreatePopup = ".popup_new-avatar";
+export const avaCreateForm = document.forms["avatar-data"];
+export const confirmDelPopup = ".popup_confirm";
+export const delButton = document.querySelector(".element__basket");
+export const delCardForm = document.forms["popup__form_confirm"];
 
 export const selectors = {
   formSelector: ".popup__form",
