@@ -1,7 +1,5 @@
 export class Api {
-  constructor(options) {
-    // тело конструктора
-  }
+  constructor(options) { }
 
   getUserInfo() {
     return fetch('https://nomoreparties.co/v1/cohort-59/users/me', { headers: {
@@ -9,7 +7,6 @@ export class Api {
     }
   })
   .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch()
   }
 
   getInitialCards() {
@@ -18,7 +15,6 @@ export class Api {
     }
   })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch()
   }
   
   //добавление информации о пользователе
@@ -35,7 +31,6 @@ export class Api {
       })
     })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
 
 //сменить аватар
@@ -51,7 +46,6 @@ export class Api {
       })
     })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
 
   addCard(name, link) {
@@ -67,7 +61,6 @@ export class Api {
       })
     })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
 
   deleteCard(cardId) {
@@ -78,7 +71,6 @@ export class Api {
       },
      })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
 
   setLike(cardId) {
@@ -89,7 +81,6 @@ export class Api {
       },
      })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
 
   deleteLike(cardId) {
@@ -100,7 +91,5 @@ export class Api {
       },
      })
     .then(res => res.ok ? res.json() : Promise.reject()) 
-    .catch() 
   }
-
 }

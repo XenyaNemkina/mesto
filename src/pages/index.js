@@ -25,7 +25,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then(([userData, data]) => {
   userInfo.setUserInfo(userData);
   userId = userData._id;
-  cardList.renderItems(data);
+  cardList.renderItems(data.reverse());
 })
 .catch((err) => {
   console.log(err); 
@@ -68,20 +68,21 @@ function renderCard(data) {
       .catch((err) => {
         console.log(err); 
       })}})
-  const newElement = cardElement.generateCard();
-  cardList.addItem(newElement)
+  return cardElement.generateCard();
 }
 
-const cardList = new Section(renderCard, elementsContainer);
+const cardList = new Section({renderer: (item) => {
+  cardList.addItem(renderCard(item))
+}}, elementsContainer);
 
 const userInfo = new UserInfo({ selectorName: ".info__name", selectorProf: ".info__profession", selectorAvatar: ".profile__avatar" });
 
 //попап информация профиля
 profileOpenButton.addEventListener("click", () => {
-  userInfoFormPopup.open();
   const { name, prof } = userInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = prof;
+  userInfoFormPopup.open();
 });
 
 const userInfoFormPopup = new PopupWithForm({
@@ -100,7 +101,6 @@ const userInfoFormPopup = new PopupWithForm({
   },
 });
 userInfoFormPopup.setEventListeners();
-
 
 //попап аватар
 const newAvaPopup = new PopupWithForm({selectorPopup: avaCreatePopup,
@@ -122,20 +122,16 @@ avaCreateButton.addEventListener("click", () => {
   newAvaPopup.open();
 })
 
-
 //попап большая картинка
 const fullImagePopup = new PopupWithImage(fullImgPopup);
 fullImagePopup.setEventListeners();
-
-
 
 //попап новая карточка
 const newCardFormPopup = new PopupWithForm({ selectorPopup: newCardPopup, handleFormSubmit: (data) => {
   newCardFormPopup.setButtonText("Сохранение...");
   api.addCard(data.name, data.link)
-  .then(res => {
-  renderCard(res)
-  newCardValidator.resetValidation()
+  .then(data => {
+  cardList.addItem(renderCard(data))
   newCardFormPopup.close();})
   .catch((err) => {
     console.log(err); 
@@ -145,16 +141,13 @@ const newCardFormPopup = new PopupWithForm({ selectorPopup: newCardPopup, handle
 
 newCardFormPopup.setEventListeners();
 newCardOpenButton.addEventListener("click", () => {
+  newCardValidator.resetValidation()
   newCardFormPopup.open();
 });
-
 
 //попап удаления карточки
 const delCardPopup = new PopupWithConfirmation({selectorPopup: confirmDelPopup});
 delCardPopup.setEventListeners();
-
-
-
 
 //валидаторы
 const newCardValidator = new FormValidator(selectors, newCardForm);
